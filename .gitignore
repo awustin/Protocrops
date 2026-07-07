@@ -1,0 +1,132 @@
+# ======================================================
+# Protocrops - Unity .gitignore
+# Unity 6 / Unity 2022+
+# ======================================================
+
+############################
+# Unity generated folders
+############################
+
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+UserSettings/
+
+############################
+# Addressables
+############################
+
+ServerData/
+
+############################
+# Asset Import Pipeline
+############################
+
+Assets/AssetStoreTools*
+
+############################
+# Visual Studio
+############################
+
+.vs/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+############################
+# Rider / JetBrains
+############################
+
+.idea/
+*.sln.iml
+
+############################
+# VS Code
+############################
+
+.vscode/
+
+############################
+# OS files
+############################
+
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+############################
+# Crash reports
+############################
+
+sysinfo.txt
+
+############################
+# Generated Packages
+############################
+
+*.unitypackage
+
+############################
+# Profiling
+############################
+
+*.raw
+*.data
+*.snap
+
+############################
+# Test results
+############################
+
+TestResults/
+
+############################
+# Local caches
+############################
+
+.gradle/
+
+############################
+# Ignore exported builds
+############################
+
+Exports/
+Release/
+Releases/
+Dist/
+
+############################
+# Uncomment if using FMOD
+############################
+# Assets/StreamingAssets/*.bank
+
+############################
+# Uncomment if using generated docs
+############################
+# Docs/Generated/
+
+############################
+# Keep these folders tracked
+############################
+
+!Assets/
+!Packages/
+!ProjectSettings/
+
+*.slnx
