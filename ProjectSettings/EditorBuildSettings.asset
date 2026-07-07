@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu/MenuScene.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/MoveAndCollect/MoveAndCollectScene.unity
+    guid: 13dbf3e2274144df79b29800f0841f44
+  - enabled: 1
+    path: Assets/Scenes/CollectAndBuild/CollectAndBuildScene.unity
+    guid: 2d7c8e15fecac4f25898c02706c8b2ec
+  - enabled: 1
+    path: Assets/Scenes/AttackWave/AttackWaveScene.unity
+    guid: 019532047ac714172be7a815ed768b12
+  - enabled: 1
+    path: Assets/Scenes/LowRes/LowResScene.unity
+    guid: d92890c1916f642ae82fb74aa7c132cb
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 0b360d5d1a3a3471a9e6e6b1665a9eba, type: 3}

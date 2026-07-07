@@ -1,0 +1,8 @@
+﻿<Solution>
+  <Project Path="CommonAssembly.csproj" />
+  <Project Path="AttackWaveAssembly.csproj" />
+  <Project Path="CollectAndBuildAssembly.csproj" />
+  <Project Path="MenuAssembly.csproj" />
+  <Project Path="RuntimeAssembly.csproj" />
+  <Project Path="MoveAndCollectAssembly.csproj" />
+</Solution>

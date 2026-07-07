@@ -1,0 +1,18 @@
+{
+    "name": "CollectAndBuildAssembly",
+    "rootNamespace": "CollectAndBuild",
+    "references": [
+        "GUID:c2f293b9661714a13b92632d1fec698d",
+        "GUID:0c0533be370f6464384675ed909741ff",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
