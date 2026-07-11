@@ -1,0 +1,11 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/_Project/UI/LoadMenu/Styles.uss?fileID=7433441132597879392&amp;guid=bdb142167ff804084b8695445cb9fe93&amp;type=3#Styles"/>
+    <ui:Box class="menu" style="background-image: url(&quot;project://database/Assets/_Project/UI/LoadMenu/CityClayModelImage.png?fileID=2800000&amp;guid=7f8403f71b49c415eb03699ff295a157&amp;type=3#CityClayModelImage&quot;); -unity-background-scale-mode: scale-and-crop; -unity-background-image-tint-color: rgb(255, 255, 255); -unity-material: url(&quot;&quot;);">
+        <ui:Label text="Protocrops" class="menu__title" style="font-size: 60px; -unity-font-style: bold-and-italic;"/>
+        <ui:Label text="A prototype for Hypercrops" class="menu__subtitle" style="font-size: 30px; -unity-font-style: italic;"/>
+        <ui:Box class="menu__option-container" style="flex-direction: column; justify-content: space-around; align-self: center; align-items: stretch; align-content: flex-start; height: 400px; width: 500px; background-color: rgba(222, 222, 222, 0);">
+            <ui:Button text="Start" name="startButton" class="menu__option" style="height: 100px; font-size: 50px; -unity-font-style: bold-and-italic;"/>
+            <ui:Button text="Quit" name="quitButton" class="menu__option" style="height: 100px; font-size: 50px; -unity-font-style: bold-and-italic;"/>
+        </ui:Box>
+    </ui:Box>
+</ui:UXML>
