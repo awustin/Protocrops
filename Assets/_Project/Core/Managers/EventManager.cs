@@ -7,11 +7,18 @@ public enum EventName
 
 public class EventManager : Singleton<EventManager>
 {
-    public event Action StartGame;
+    public event Action
+        StartGame,
+        PauseGame;
 
     public void SendStartGame()
     {
         StartGame?.Invoke();
+    }
+
+    public void SendPauseGame()
+    {
+        PauseGame?.Invoke();
     }
 
     public void SendGameEvent(EventName name = EventName.Unknown)

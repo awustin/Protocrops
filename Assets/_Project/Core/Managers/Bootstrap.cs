@@ -1,3 +1,4 @@
+using System;
 using UnityEngine.SceneManagement;
 
 public class Bootstrap : Singleton<Bootstrap>
@@ -31,7 +32,8 @@ public class Bootstrap : Singleton<Bootstrap>
 
     private void BootstrapGame()
     {
-        bool hasGameplay = SceneManager.GetSceneByName(SceneName.Gameplay.ToString()).IsValid();
+        Scene gameplayScene = SceneManager.GetSceneByName(SceneName.Gameplay.ToString());
+        bool hasGameplay = gameplayScene.IsValid();
         bool hasUI = SceneManager.GetSceneByName(SceneName.UI.ToString()).IsValid();
         bool hasLevel = SceneManager.GetSceneByName(SceneName.Level.ToString()).IsValid();
         bool hasLoadMenu = SceneManager.GetSceneByName(SceneName.LoadMenu.ToString()).IsValid();

@@ -2,7 +2,7 @@
     "name": "Core",
     "rootNamespace": "Core",
     "references": [
-        ""
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
