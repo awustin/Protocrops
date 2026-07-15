@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.9622642, g: 0.45843717, b: 0.45843717, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.005
+  m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.3255162, g: 0.45914918, b: 0.7264151, a: 1}
@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 5868316}
   - component: {fileID: 5868317}
   - component: {fileID: 5868318}
+  - component: {fileID: 5868319}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -176,6 +177,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c90451d74bf468395fe8eefa752a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Core::InputPublisher
+--- !u!114 &5868319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5868315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b64899c2bec4a75a91b55c80f87311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Features::ScoreManager
+  _bioScore: {fileID: 11400000, guid: 9da6287be6c71466e94086c4808464f6, type: 2}
 --- !u!1 &153883637
 GameObject:
   m_ObjectHideFlags: 0

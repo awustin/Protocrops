@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="BioScoreContainer" data-source-type="" data-source-path="BioScore" data-source="project://database/Assets/_Project/UI/BioScoreDisplay/BioScore.asset?fileID=11400000&amp;guid=9da6287be6c71466e94086c4808464f6&amp;type=2#BioScore" style="flex-grow: 1; align-items: center; justify-content: center; align-content: flex-end; flex-direction: column;">
+        <ui:VisualElement name="BioScore" style="flex-grow: 1; height: 100px; visibility: visible; opacity: 1; bottom: auto; position: relative; flex-direction: column; justify-content: flex-end; align-self: center; align-content: auto; align-items: auto; border-bottom-width: 10px; border-top-width: 10px;">
+            <ui:Label text="0" name="Score" data-source-type="" data-source-path="" data-source="" style="height: auto; font-size: 30px; -unity-font-style: bold-and-italic;">
+                <Bindings>
+                    <ui:DataBinding property="text" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:Label>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
