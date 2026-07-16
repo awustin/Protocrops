@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 5868317}
   - component: {fileID: 5868318}
   - component: {fileID: 5868319}
+  - component: {fileID: 5868320}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -190,6 +191,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Features::ScoreManager
   _bioScore: {fileID: 11400000, guid: 9da6287be6c71466e94086c4808464f6, type: 2}
+--- !u!114 &5868320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5868315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc9e4b50736740d0b8601a53eb0fdf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Features::MissionManager
+  _savedQueue: []
 --- !u!1 &153883637
 GameObject:
   m_ObjectHideFlags: 0

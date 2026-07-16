@@ -4,6 +4,7 @@ public enum EventName
 {
     Unknown,
     UpdateScore,
+    NewMission,
 }
 
 public class EventManager : Singleton<EventManager>
@@ -13,6 +14,7 @@ public class EventManager : Singleton<EventManager>
         PauseGame;
 
     public event EventHandler<float> UpdateScore;
+    public event EventHandler<object> NewMission;
 
     public void SendStartGame()
     {
@@ -24,12 +26,24 @@ public class EventManager : Singleton<EventManager>
         PauseGame?.Invoke();
     }
 
-    public void SendGameEvent(EventName name, float args)
+    public void SendGameEvent(EventName name, float value)
     {
         switch (name)
         {
             case EventName.UpdateScore:
-                UpdateScore?.Invoke(this, args);
+                UpdateScore?.Invoke(this, value);
+                break;
+            default:
+                return;
+        }
+    }
+
+    public void SendGameEvent(EventName name, object obj)
+    {
+        switch (name)
+        {
+            case EventName.NewMission:
+                NewMission?.Invoke(this, obj);
                 break;
             default:
                 return;
