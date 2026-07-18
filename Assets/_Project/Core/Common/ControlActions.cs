@@ -89,7 +89,7 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
     ""name"": ""ControlActions"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""PlayerPoll"",
             ""id"": ""df70fa95-8a34-4494-b137-73ab6b9c7d37"",
             ""actions"": [
                 {
@@ -109,24 +109,6 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""852140f2-7766-474d-8707-702459ba45f3"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": ""Hold"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""f1ba0d36-48eb-4cd5-b651-1c94a6531f70"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -264,7 +246,44 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""eb40bb66-4559-4dfa-9a2f-820438abb426"",
+                    ""id"": ""c4780967-7485-4b1d-9612-0cf8de1900a3"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse;Gamepad"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""PlayerInterrupt"",
+            ""id"": ""eecd5c39-ae76-42a5-9305-d5dab7ee3653"",
+            ""actions"": [
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""b50eb49e-9252-40bc-88ba-f967e287833b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""af7ce144-7db0-488d-89e7-d245abfe578e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""12edb0e5-e929-4544-b40b-6d72bcceca65"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -275,7 +294,7 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""daba33a1-ad0c-4742-a909-43ad1cdfbeb6"",
+                    ""id"": ""1646b583-65a9-4f6b-8330-a1b5bbccf37e"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -286,7 +305,7 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""603f3daf-40bd-4854-8724-93e8017f59e3"",
+                    ""id"": ""ef5dd306-0058-411f-a7dc-6fdfed1a44eb"",
                     ""path"": ""<XRController>/secondaryButton"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -297,7 +316,7 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1c04ea5f-b012-41d1-a6f7-02e963b52893"",
+                    ""id"": ""568cc371-ce91-4185-bf32-f796bfe5e1cd"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -308,23 +327,12 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b3f66d0b-7751-423f-908b-a11c5bd95930"",
+                    ""id"": ""764450d1-d70a-470c-a71f-d7b65fe3bffe"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c4780967-7485-4b1d-9612-0cf8de1900a3"",
-                    ""path"": ""<Mouse>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse;Gamepad"",
-                    ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -949,12 +957,14 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Player
-        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
-        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        // PlayerPoll
+        m_PlayerPoll = asset.FindActionMap("PlayerPoll", throwIfNotFound: true);
+        m_PlayerPoll_Move = m_PlayerPoll.FindAction("Move", throwIfNotFound: true);
+        m_PlayerPoll_Look = m_PlayerPoll.FindAction("Look", throwIfNotFound: true);
+        // PlayerInterrupt
+        m_PlayerInterrupt = asset.FindActionMap("PlayerInterrupt", throwIfNotFound: true);
+        m_PlayerInterrupt_Interact = m_PlayerInterrupt.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerInterrupt_Jump = m_PlayerInterrupt.FindAction("Jump", throwIfNotFound: true);
         // GameUI
         m_GameUI = asset.FindActionMap("GameUI", throwIfNotFound: true);
         m_GameUI_Navigate = m_GameUI.FindAction("Navigate", throwIfNotFound: true);
@@ -974,7 +984,8 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
 
     ~@ControlActions()
     {
-        UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, ControlActions.Player.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_PlayerPoll.enabled, "This will cause a leak and performance issues, ControlActions.PlayerPoll.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_PlayerInterrupt.enabled, "This will cause a leak and performance issues, ControlActions.PlayerInterrupt.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_GameUI.enabled, "This will cause a leak and performance issues, ControlActions.GameUI.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Gameplay.enabled, "This will cause a leak and performance issues, ControlActions.Gameplay.Disable() has not been called.");
     }
@@ -1049,44 +1060,34 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Player
-    private readonly InputActionMap m_Player;
-    private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-    private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Look;
-    private readonly InputAction m_Player_Interact;
-    private readonly InputAction m_Player_Jump;
+    // PlayerPoll
+    private readonly InputActionMap m_PlayerPoll;
+    private List<IPlayerPollActions> m_PlayerPollActionsCallbackInterfaces = new List<IPlayerPollActions>();
+    private readonly InputAction m_PlayerPoll_Move;
+    private readonly InputAction m_PlayerPoll_Look;
     /// <summary>
-    /// Provides access to input actions defined in input action map "Player".
+    /// Provides access to input actions defined in input action map "PlayerPoll".
     /// </summary>
-    public struct PlayerActions
+    public struct PlayerPollActions
     {
         private @ControlActions m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public PlayerActions(@ControlActions wrapper) { m_Wrapper = wrapper; }
+        public PlayerPollActions(@ControlActions wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Player/Move".
+        /// Provides access to the underlying input action "PlayerPoll/Move".
         /// </summary>
-        public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @Move => m_Wrapper.m_PlayerPoll_Move;
         /// <summary>
-        /// Provides access to the underlying input action "Player/Look".
+        /// Provides access to the underlying input action "PlayerPoll/Look".
         /// </summary>
-        public InputAction @Look => m_Wrapper.m_Player_Look;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Interact".
-        /// </summary>
-        public InputAction @Interact => m_Wrapper.m_Player_Interact;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Jump".
-        /// </summary>
-        public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        public InputAction @Look => m_Wrapper.m_PlayerPoll_Look;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_Player; }
+        public InputActionMap Get() { return m_Wrapper.m_PlayerPoll; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -1094,9 +1095,9 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="PlayerActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="PlayerPollActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(PlayerPollActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -1104,17 +1105,118 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="PlayerActions" />
-        public void AddCallbacks(IPlayerActions instance)
+        /// <seealso cref="PlayerPollActions" />
+        public void AddCallbacks(IPlayerPollActions instance)
         {
-            if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_PlayerPollActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerPollActionsCallbackInterfaces.Add(instance);
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="PlayerPollActions" />
+        private void UnregisterCallbacks(IPlayerPollActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @Look.started -= instance.OnLook;
+            @Look.performed -= instance.OnLook;
+            @Look.canceled -= instance.OnLook;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerPollActions.UnregisterCallbacks(IPlayerPollActions)" />.
+        /// </summary>
+        /// <seealso cref="PlayerPollActions.UnregisterCallbacks(IPlayerPollActions)" />
+        public void RemoveCallbacks(IPlayerPollActions instance)
+        {
+            if (m_Wrapper.m_PlayerPollActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="PlayerPollActions.AddCallbacks(IPlayerPollActions)" />
+        /// <seealso cref="PlayerPollActions.RemoveCallbacks(IPlayerPollActions)" />
+        /// <seealso cref="PlayerPollActions.UnregisterCallbacks(IPlayerPollActions)" />
+        public void SetCallbacks(IPlayerPollActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerPollActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerPollActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="PlayerPollActions" /> instance referencing this action map.
+    /// </summary>
+    public PlayerPollActions @PlayerPoll => new PlayerPollActions(this);
+
+    // PlayerInterrupt
+    private readonly InputActionMap m_PlayerInterrupt;
+    private List<IPlayerInterruptActions> m_PlayerInterruptActionsCallbackInterfaces = new List<IPlayerInterruptActions>();
+    private readonly InputAction m_PlayerInterrupt_Interact;
+    private readonly InputAction m_PlayerInterrupt_Jump;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "PlayerInterrupt".
+    /// </summary>
+    public struct PlayerInterruptActions
+    {
+        private @ControlActions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public PlayerInterruptActions(@ControlActions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerInterrupt/Interact".
+        /// </summary>
+        public InputAction @Interact => m_Wrapper.m_PlayerInterrupt_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerInterrupt/Jump".
+        /// </summary>
+        public InputAction @Jump => m_Wrapper.m_PlayerInterrupt_Jump;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_PlayerInterrupt; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="PlayerInterruptActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(PlayerInterruptActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="PlayerInterruptActions" />
+        public void AddCallbacks(IPlayerInterruptActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerInterruptActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerInterruptActionsCallbackInterfaces.Add(instance);
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
@@ -1129,15 +1231,9 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="PlayerActions" />
-        private void UnregisterCallbacks(IPlayerActions instance)
+        /// <seealso cref="PlayerInterruptActions" />
+        private void UnregisterCallbacks(IPlayerInterruptActions instance)
         {
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
-            @Look.started -= instance.OnLook;
-            @Look.performed -= instance.OnLook;
-            @Look.canceled -= instance.OnLook;
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
@@ -1147,12 +1243,12 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerInterruptActions.UnregisterCallbacks(IPlayerInterruptActions)" />.
         /// </summary>
-        /// <seealso cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />
-        public void RemoveCallbacks(IPlayerActions instance)
+        /// <seealso cref="PlayerInterruptActions.UnregisterCallbacks(IPlayerInterruptActions)" />
+        public void RemoveCallbacks(IPlayerInterruptActions instance)
         {
-            if (m_Wrapper.m_PlayerActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PlayerInterruptActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -1162,21 +1258,21 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="PlayerActions.AddCallbacks(IPlayerActions)" />
-        /// <seealso cref="PlayerActions.RemoveCallbacks(IPlayerActions)" />
-        /// <seealso cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />
-        public void SetCallbacks(IPlayerActions instance)
+        /// <seealso cref="PlayerInterruptActions.AddCallbacks(IPlayerInterruptActions)" />
+        /// <seealso cref="PlayerInterruptActions.RemoveCallbacks(IPlayerInterruptActions)" />
+        /// <seealso cref="PlayerInterruptActions.UnregisterCallbacks(IPlayerInterruptActions)" />
+        public void SetCallbacks(IPlayerInterruptActions instance)
         {
-            foreach (var item in m_Wrapper.m_PlayerActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PlayerInterruptActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_PlayerActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PlayerInterruptActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="PlayerActions" /> instance referencing this action map.
+    /// Provides a new <see cref="PlayerInterruptActions" /> instance referencing this action map.
     /// </summary>
-    public PlayerActions @Player => new PlayerActions(this);
+    public PlayerInterruptActions @PlayerInterrupt => new PlayerInterruptActions(this);
 
     // GameUI
     private readonly InputActionMap m_GameUI;
@@ -1534,11 +1630,11 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
         }
     }
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerPoll" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="PlayerActions.AddCallbacks(IPlayerActions)" />
-    /// <seealso cref="PlayerActions.RemoveCallbacks(IPlayerActions)" />
-    public interface IPlayerActions
+    /// <seealso cref="PlayerPollActions.AddCallbacks(IPlayerPollActions)" />
+    /// <seealso cref="PlayerPollActions.RemoveCallbacks(IPlayerPollActions)" />
+    public interface IPlayerPollActions
     {
         /// <summary>
         /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
@@ -1554,6 +1650,14 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLook(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerInterrupt" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="PlayerInterruptActions.AddCallbacks(IPlayerInterruptActions)" />
+    /// <seealso cref="PlayerInterruptActions.RemoveCallbacks(IPlayerInterruptActions)" />
+    public interface IPlayerInterruptActions
+    {
         /// <summary>
         /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

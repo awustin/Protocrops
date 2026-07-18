@@ -16,8 +16,18 @@ public class TrackYawAndPitch : MonoBehaviour
         _screenOrigin = new(xOrigin, yOrigin);
 
         // For a controlled rotation
-        _yYaw = (float)360 / Screen.width;
+        _yYaw = (float)720 / Screen.width;
         _xPitch = (float)(90 * .9f) / Screen.height;
+    }
+
+    private void OnEnable()
+    {
+        Cursor.visible = false;
+    }
+
+    private void OnDisable()
+    {
+        Cursor.visible = true;
     }
 
     private void Update()

@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="DialogModal" data-source-type="DialogModalManager, Features" style="flex-grow: 1; height: auto; visibility: visible; opacity: 1; bottom: 2%; position: absolute; flex-direction: row; justify-content: flex-start; align-self: center; align-content: auto; align-items: auto; border-bottom-width: 10px; border-top-width: 10px; background-color: rgba(255, 255, 255, 0.502); flex-wrap: wrap; width: 90%; min-height: 10%; padding-right: 10px; padding-left: 10px;">
+        <ui:Label text="" name="DialogText" style="font-size: 20px; white-space: normal; text-overflow: clip; justify-content: flex-start; align-self: flex-start; align-content: flex-start;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="Text" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:Label>
+    </ui:VisualElement>
+</ui:UXML>

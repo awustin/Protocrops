@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34724fac30364bd0a72822a635a3c5c, type: 3}
   m_Name: FirstMission
   m_EditorClassIdentifier: Features::Mission
-  _stepSequence:
+  _taskSequence:
   - {fileID: 11400000, guid: 53f4f5bdf753143fb89143cbbeff1b31, type: 2}
   - {fileID: 11400000, guid: da144623b843e45299f60ef71c67b2ed, type: 2}
   - {fileID: 11400000, guid: 790c81e6fd2d944ee85c87286c09e0ff, type: 2}

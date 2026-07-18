@@ -3,11 +3,13 @@ using System.Collections.Generic;
 
 public class MissionManager : Singleton<MissionManager>
 {
-    public Queue<Mission> MissionQueue { get; private set; }
+    public Queue<Mission> MissionQueue { get; private set; } = new();
     public Mission CurrentMission =>
-        MissionQueue.Count == 0 ? Mission.GetDefault() : MissionQueue.Peek();
+        MissionQueue.Count == 0 ? Mission.Default : MissionQueue.Peek();
+    public Task CurrentTask => CurrentMission.GetCurrentTask();
+
     private EventManager _eventManager;
-    [SerializeField] private List<Mission> _savedQueue = new();
+    [SerializeField] private List<Mission> _debugQueue = new();
 
     private void Awake()
     {
@@ -16,29 +18,34 @@ public class MissionManager : Singleton<MissionManager>
 
     private void OnEnable()
     {
+        _eventManager = EventManager.Instance;
         _eventManager.NewMission += EnqueueMission;
-        Load();
     }
 
     private void OnDisable()
     {
         _eventManager.NewMission -= EnqueueMission;
-        Save();
     }
 
-    private void EnqueueMission(object sender, object mission)
+    private void LateUpdate()
     {
-        MissionQueue.Enqueue((Mission)mission);
+        _debugQueue.Clear();
+        _debugQueue.AddRange(MissionQueue);
     }
 
-    private void Save()
+    private void EnqueueMission(object sender, object obj)
     {
-        _savedQueue.Clear();
-        _savedQueue.AddRange(MissionQueue);
-    }
+        try
+        {
+            Mission mission = (Mission)obj;
 
-    private void Load()
-    {
-        MissionQueue = new(_savedQueue);
+            mission.StartMission();
+            mission.CompleteCurrentTask();
+            MissionQueue.Enqueue(mission);
+        }
+        catch (System.Exception)
+        {
+            Debug.Log($"Tried to start mission but sent '{nameof(obj)}' instead");
+        }
     }
 }

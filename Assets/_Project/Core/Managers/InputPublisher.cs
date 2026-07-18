@@ -1,6 +1,7 @@
 using UnityEngine.InputSystem;
 
-public class InputPublisher : Singleton<InputPublisher>, ControlActions.IGameplayActions
+public class InputPublisher :
+    Singleton<InputPublisher>, ControlActions.IGameplayActions, ControlActions.IPlayerInterruptActions
 {
     private EventManager _eventManager;
     private ControlActions _controlActions;
@@ -10,6 +11,7 @@ public class InputPublisher : Singleton<InputPublisher>, ControlActions.IGamepla
         _eventManager = EventManager.Instance;
         _controlActions = new();
         _controlActions.Gameplay.SetCallbacks(this);
+        _controlActions.PlayerInterrupt.SetCallbacks(this);
     }
 
     private void OnEnable()
@@ -28,5 +30,18 @@ public class InputPublisher : Singleton<InputPublisher>, ControlActions.IGamepla
         {
             _eventManager.SendPauseGame();
         }
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _eventManager.SendInteractCommand();
+        }
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        throw new System.NotImplementedException();
     }
 }

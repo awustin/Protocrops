@@ -5,16 +5,19 @@ public enum EventName
     Unknown,
     UpdateScore,
     NewMission,
+    NPCSpeaks,
 }
 
 public class EventManager : Singleton<EventManager>
 {
     public event Action
         StartGame,
-        PauseGame;
+        PauseGame,
+        Interact;
 
     public event EventHandler<float> UpdateScore;
     public event EventHandler<object> NewMission;
+    public event EventHandler<string> NPCSpeaks;
 
     public void SendStartGame()
     {
@@ -24,6 +27,11 @@ public class EventManager : Singleton<EventManager>
     public void SendPauseGame()
     {
         PauseGame?.Invoke();
+    }
+
+    public void SendInteractCommand()
+    {
+        Interact?.Invoke();
     }
 
     public void SendGameEvent(EventName name, float value)
@@ -44,6 +52,18 @@ public class EventManager : Singleton<EventManager>
         {
             case EventName.NewMission:
                 NewMission?.Invoke(this, obj);
+                break;
+            default:
+                return;
+        }
+    }
+
+    public void SendGameEvent(EventName name, string str)
+    {
+        switch (name)
+        {
+            case EventName.NPCSpeaks:
+                NPCSpeaks?.Invoke(this, str);
                 break;
             default:
                 return;

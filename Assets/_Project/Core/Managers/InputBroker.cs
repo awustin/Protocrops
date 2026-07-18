@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputBroker : Singleton<InputBroker>, ControlActions.IPlayerActions
+public class InputBroker : Singleton<InputBroker>, ControlActions.IPlayerPollActions
 {
     public Vector2 Move { get; private set; }
     public Vector2 Look { get; private set; }
@@ -12,7 +12,7 @@ public class InputBroker : Singleton<InputBroker>, ControlActions.IPlayerActions
     private void Awake()
     {
         _controlActions = new();
-        _controlActions.Player.SetCallbacks(this);
+        _controlActions.PlayerPoll.SetCallbacks(this);
 
         ClearValues();
         Invoke(nameof(StartInputReading), 1.0f);
@@ -59,9 +59,6 @@ public class InputBroker : Singleton<InputBroker>, ControlActions.IPlayerActions
 
         Look = screenCoordinates;
     }
-
-    public void OnInteract(InputAction.CallbackContext context) { }
-    public void OnJump(InputAction.CallbackContext context) { }
 
     private void StartInputReading()
     {
