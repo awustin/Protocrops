@@ -17,7 +17,8 @@ public class EventManager : Singleton<EventManager>
         StartGame,
         PauseGame,
         Interact,
-        ToggleInventory;
+        ToggleInventory,
+        NextTask;
     public event Action<EventName> NotifyTaskObserver;
     public event EventHandler<float> UpdateScore;
     public event EventHandler<object> NewMission, CollectItem;
@@ -30,8 +31,8 @@ public class EventManager : Singleton<EventManager>
         Interact?.Invoke();
         SendTaskNotification(EventName.InteractCommand);
     }
-
     public void SendToggleInventoryCommand() => ToggleInventory?.Invoke();
+    public void SendNextTask() => NextTask?.Invoke();
 
     public void SendGameEvent(EventName name, float value)
     {

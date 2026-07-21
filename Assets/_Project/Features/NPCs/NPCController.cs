@@ -42,7 +42,7 @@ public class NPCController : MonoBehaviour
 
                     if (taskDescription != "")
                     {
-                        _eventManager.SendGameEvent(EventName.NPCSpeaks, $"Your next task is: {_missionManager.CurrentTask.Description}");
+                        _eventManager.SendGameEvent(EventName.NPCSpeaks, $"Your current task is: {_missionManager.CurrentTask.Description}");
                         return;
                     }
 

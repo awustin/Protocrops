@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Features::Mission
   _tasksData:
   - {fileID: 11400000, guid: 53f4f5bdf753143fb89143cbbeff1b31, type: 2}
+  - {fileID: 11400000, guid: da144623b843e45299f60ef71c67b2ed, type: 2}
+  - {fileID: 11400000, guid: 790c81e6fd2d944ee85c87286c09e0ff, type: 2}
+  - {fileID: 11400000, guid: 6c85062303e4a4966933e39dd6efcdfd, type: 2}
   _displayName: Build the first module
