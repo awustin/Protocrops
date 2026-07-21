@@ -278,6 +278,15 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""44cf936d-03c9-4a53-bc73-60670125ea56"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -333,6 +342,61 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bd31c13f-e700-434d-b6ae-34c23e964e56"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1b88e518-798f-4f2b-b2b2-3b3948c605d1"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d83e007-4207-4984-9fa5-05a552eb2981"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a33399b7-6b6d-4453-97d7-0f6436be3f4d"",
+                    ""path"": ""*/{Menu}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad;Joystick;Touch;XR"",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""52e82f85-5ab0-49f0-a508-9c84d705580f"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -965,6 +1029,7 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
         m_PlayerInterrupt = asset.FindActionMap("PlayerInterrupt", throwIfNotFound: true);
         m_PlayerInterrupt_Interact = m_PlayerInterrupt.FindAction("Interact", throwIfNotFound: true);
         m_PlayerInterrupt_Jump = m_PlayerInterrupt.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerInterrupt_Inventory = m_PlayerInterrupt.FindAction("Inventory", throwIfNotFound: true);
         // GameUI
         m_GameUI = asset.FindActionMap("GameUI", throwIfNotFound: true);
         m_GameUI_Navigate = m_GameUI.FindAction("Navigate", throwIfNotFound: true);
@@ -1172,6 +1237,7 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
     private List<IPlayerInterruptActions> m_PlayerInterruptActionsCallbackInterfaces = new List<IPlayerInterruptActions>();
     private readonly InputAction m_PlayerInterrupt_Interact;
     private readonly InputAction m_PlayerInterrupt_Jump;
+    private readonly InputAction m_PlayerInterrupt_Inventory;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerInterrupt".
     /// </summary>
@@ -1191,6 +1257,10 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerInterrupt/Jump".
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_PlayerInterrupt_Jump;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerInterrupt/Inventory".
+        /// </summary>
+        public InputAction @Inventory => m_Wrapper.m_PlayerInterrupt_Inventory;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1223,6 +1293,9 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Inventory.started += instance.OnInventory;
+            @Inventory.performed += instance.OnInventory;
+            @Inventory.canceled += instance.OnInventory;
         }
 
         /// <summary>
@@ -1240,6 +1313,9 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Inventory.started -= instance.OnInventory;
+            @Inventory.performed -= instance.OnInventory;
+            @Inventory.canceled -= instance.OnInventory;
         }
 
         /// <summary>
@@ -1672,6 +1748,13 @@ public partial class @ControlActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Inventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInventory(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "GameUI" which allows adding and removing callbacks.

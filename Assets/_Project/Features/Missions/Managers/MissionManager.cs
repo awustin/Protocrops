@@ -4,12 +4,11 @@ using System.Collections.Generic;
 public class MissionManager : Singleton<MissionManager>
 {
     public Queue<Mission> MissionQueue { get; private set; } = new();
-    public Mission CurrentMission =>
-        MissionQueue.Count == 0 ? Mission.Default : MissionQueue.Peek();
-    public Task CurrentTask => CurrentMission.GetCurrentTask();
+    public Mission CurrentMission => MissionQueue.Peek();
+    public TaskData CurrentTask => CurrentMission.CurrentTask;
 
     private EventManager _eventManager;
-    [SerializeField] private List<Mission> _debugQueue = new();
+    [SerializeField] private TaskEventObserver _taskEventObserver;
 
     private void Awake()
     {
@@ -19,33 +18,47 @@ public class MissionManager : Singleton<MissionManager>
     private void OnEnable()
     {
         _eventManager = EventManager.Instance;
-        _eventManager.NewMission += EnqueueMission;
+        _eventManager.NewMission += EnqueueNewMission;
     }
 
     private void OnDisable()
     {
-        _eventManager.NewMission -= EnqueueMission;
+        _eventManager.NewMission -= EnqueueNewMission;
+
+        foreach (Mission mission in GetComponents<Mission>())
+        {
+            Destroy(mission);
+        }
     }
 
-    private void LateUpdate()
-    {
-        _debugQueue.Clear();
-        _debugQueue.AddRange(MissionQueue);
-    }
-
-    private void EnqueueMission(object sender, object obj)
+    private void EnqueueNewMission(object sender, object obj)
     {
         try
         {
-            Mission mission = (Mission)obj;
+            MissionData missionData = (MissionData)obj;
 
-            mission.StartMission();
-            mission.CompleteCurrentTask();
+            GameObject missionObject = new(missionData.DisplayName);
+            missionObject.transform.SetParent(transform, false);
+            Mission mission = missionObject.AddComponent<Mission>();
+
+            mission.StartMission(missionData);
+
+            TaskData currentTask = mission.CurrentTask;
+
+            if (currentTask.Type == TaskType.EventEffect)
+            {
+                _taskEventObserver.SetTask(mission.CurrentTask);
+                _taskEventObserver.Activate();
+            }
+
+            // To do: add a Task Poll Observer
+
+
             MissionQueue.Enqueue(mission);
         }
-        catch (System.Exception)
+        catch (System.Exception e)
         {
-            Debug.Log($"Tried to start mission but sent '{nameof(obj)}' instead");
+            Debug.Log($"Tried to start a mission but something failed: {e.ToString()}");
         }
     }
 }

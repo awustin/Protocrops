@@ -1,3 +1,6 @@
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -15,7 +18,7 @@ public class PauseMenuManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _eventManager.PauseGame += ShowMenu;    
+        _eventManager.PauseGame += ShowMenu;
     }
 
     private void OnDisable()
@@ -50,11 +53,18 @@ public class PauseMenuManager : MonoBehaviour
     private void OnClickQuit()
     {
         _menu.gameObject.SetActive(false);
-        // End game
+        StopPlayMode();
     }
 
     private void ShowMenu()
     {
         _menu.gameObject.SetActive(true);
+    }
+
+    private void StopPlayMode()
+    {
+        #if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+        #endif
     }
 }

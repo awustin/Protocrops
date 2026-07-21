@@ -15,3 +15,5 @@ MonoBehaviour:
   Name: TalkToNpc
   Description: Talk to the NPC helper
   Id: 1
+  Type: 1
+  Effector: {fileID: 11400000, guid: 17347ebf5761745ba95d137323cd7d65, type: 2}

@@ -15,3 +15,5 @@ MonoBehaviour:
   Name: CollectClay
   Description: Collect resources from the resource area
   Id: 2
+  Type: 2
+  Effector: {fileID: 11400000, guid: 369b0e9d61a7c43788570c8eb55eff8e, type: 2}

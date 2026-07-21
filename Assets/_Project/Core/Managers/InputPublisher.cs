@@ -40,8 +40,13 @@ public class InputPublisher :
         }
     }
 
-    public void OnJump(InputAction.CallbackContext context)
+    public void OnJump(InputAction.CallbackContext context) { }
+
+    public void OnInventory(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+        if (context.performed)
+        {
+            _eventManager.SendToggleInventoryCommand();
+        }
     }
 }
