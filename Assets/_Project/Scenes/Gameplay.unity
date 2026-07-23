@@ -130,7 +130,9 @@ GameObject:
   - component: {fileID: 5868316}
   - component: {fileID: 5868317}
   - component: {fileID: 5868318}
+  - component: {fileID: 5868321}
   - component: {fileID: 5868319}
+  - component: {fileID: 5868320}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -190,6 +192,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Features::ScoreManager
   _bioScore: {fileID: 11400000, guid: 9da6287be6c71466e94086c4808464f6, type: 2}
+--- !u!114 &5868320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5868315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8149fa3965414b21913ca639e14de8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Core::GameModeManager
+  _playerInteractor: {fileID: 790372933}
+  _playerBuilder: {fileID: 790372934}
+--- !u!114 &5868321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5868315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d7efd2aea33e4dad98d004f66296afc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Core::InputGameUI
 --- !u!1 &103241642
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,6 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf2581e478bd4bdfbba0c98d0bdbbad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Features::TaskEventObserver
+  _isActive: 0
 --- !u!1 &153883637
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +454,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc493b85c6b214741b0750e9d90021ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Features::InventoryManager
-  _inventory: {fileID: 11400000, guid: 9514ca9b5a27042e4a5498d30bb433e7, type: 2}
   _viewManager: {fileID: 505307087}
 --- !u!4 &728046859
 Transform:
@@ -455,6 +483,7 @@ GameObject:
   - component: {fileID: 790372931}
   - component: {fileID: 790372932}
   - component: {fileID: 790372933}
+  - component: {fileID: 790372934}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -537,6 +566,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Core::PlayerInteractor
   _gyroscope: {fileID: 153883638}
+--- !u!114 &790372934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790372929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b5567815f10c4d54bb65a2882fd5e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Core::PlayerBuilder
+  _gyroscope: {fileID: 153883638}
+  _modulePrefab: {fileID: 3408747660699368835, guid: a1e3e6c7ad52b45f48fabbe241764409, type: 3}
+  _buildDistance: 4
+  _placementMask:
+    serializedVersion: 2
+    m_Bits: 88
 --- !u!1 &1042516126
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,9 +8,11 @@ public class InputBroker : Singleton<InputBroker>, ControlActions.IPlayerPollAct
     private bool _isReady = false;
 
     private ControlActions _controlActions;
+    private GameModeManager _gameModeManager;
 
     private void Awake()
     {
+        _gameModeManager = GameModeManager.Instance;
         _controlActions = new();
         _controlActions.PlayerPoll.SetCallbacks(this);
 
@@ -30,7 +32,8 @@ public class InputBroker : Singleton<InputBroker>, ControlActions.IPlayerPollAct
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (!_isReady) return;
+        if (!_isReady || _gameModeManager.CurrentMode == GameMode.UI)
+            return;
 
         if (context.performed)
         {
@@ -45,12 +48,13 @@ public class InputBroker : Singleton<InputBroker>, ControlActions.IPlayerPollAct
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        if (!_isReady) return;
+        if (!_isReady || _gameModeManager.CurrentMode == GameMode.UI)
+            return;
 
         Vector2 screenCoordinates = context.ReadValue<Vector2>();
 
         if (
-            screenCoordinates.x > Screen.width
+            screenCoordinates.x > Screen.width * 2
             || screenCoordinates.x < 0
             || screenCoordinates.y > Screen.height
             || screenCoordinates.y < 0

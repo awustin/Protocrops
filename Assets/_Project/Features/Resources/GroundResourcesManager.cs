@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GroundResourcesManager : MonoBehaviour
 {
-    [SerializeField] private GameItem _itemToCollect;
+    [SerializeField] private GameItemData _itemToCollect;
     private EventManager _eventManager;
 
     private void Awake()

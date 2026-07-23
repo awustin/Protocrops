@@ -16,6 +16,7 @@ public class NPCController : MonoBehaviour
     [SerializeField] private NPCData _data;
     [SerializeField] private NPCState _state = NPCState.Fresh;
     [SerializeField] private MissionData _missionData;
+    [SerializeField] private GameItemData _gameItemModule;
     private MissionManager _missionManager;
     private EventManager _eventManager;
 
@@ -32,6 +33,7 @@ public class NPCController : MonoBehaviour
             case NPCState.Fresh:
                 _eventManager.SendGameEvent(EventName.NPCSpeaks, "Start your mission!");
                 _eventManager.SendGameEvent(EventName.NewMission, _missionData);
+                _eventManager.SendGameEvent(EventName.CollectItem, (_gameItemModule, 5));
                 _state = NPCState.MissionInProgress;
                 break;
 

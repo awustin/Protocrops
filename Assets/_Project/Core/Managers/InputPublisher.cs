@@ -5,10 +5,12 @@ public class InputPublisher :
 {
     private EventManager _eventManager;
     private ControlActions _controlActions;
+    private GameModeManager _gameModeManager;
 
     private void Awake()
     {
         _eventManager = EventManager.Instance;
+        _gameModeManager = GameModeManager.Instance;
         _controlActions = new();
         _controlActions.Gameplay.SetCallbacks(this);
         _controlActions.PlayerInterrupt.SetCallbacks(this);
@@ -28,13 +30,14 @@ public class InputPublisher :
     {
         if (context.performed)
         {
+            _gameModeManager.SetMode(GameMode.UI);
             _eventManager.SendPauseGame();
         }
     }
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && _gameModeManager.CurrentMode != GameMode.UI)
         {
             _eventManager.SendInteractCommand();
         }
@@ -47,6 +50,14 @@ public class InputPublisher :
         if (context.performed)
         {
             _eventManager.SendToggleInventoryCommand();
+        }
+    }
+
+    public void OnToggleBuild(InputAction.CallbackContext context)
+    {
+        if (context.performed && _gameModeManager.CurrentMode != GameMode.UI)
+        {
+            _gameModeManager.ToggleBuildingMode();
         }
     }
 }

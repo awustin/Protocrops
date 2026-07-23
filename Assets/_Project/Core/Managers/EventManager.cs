@@ -9,6 +9,11 @@ public enum EventName
     NewMission,
     NPCSpeaks,
     ToggleInventory,
+    InventorySelectModule,
+    PlaceModule,
+    UIUp,
+    UIDown,
+    UISubmit,
 }
 
 public class EventManager : Singleton<EventManager>
@@ -18,11 +23,15 @@ public class EventManager : Singleton<EventManager>
         PauseGame,
         Interact,
         ToggleInventory,
-        NextTask;
+        NextTask,
+        UIUp,
+        UIDown,
+        UISubmit;
     public event Action<EventName> NotifyTaskObserver;
+    public event Action<GameMode> GameMode;
     public event EventHandler<float> UpdateScore;
-    public event EventHandler<object> NewMission, CollectItem;
-    public event EventHandler<string> NPCSpeaks;
+    public event EventHandler<object> NewMission, CollectItem, PlaceModule;
+    public event EventHandler<string> NPCSpeaks, InventorySelectModule;
 
     public void SendStartGame() => StartGame?.Invoke();
     public void SendPauseGame() => PauseGame?.Invoke();
@@ -33,6 +42,7 @@ public class EventManager : Singleton<EventManager>
     }
     public void SendToggleInventoryCommand() => ToggleInventory?.Invoke();
     public void SendNextTask() => NextTask?.Invoke();
+    public void SendGameModeChange(GameMode mode) => GameMode?.Invoke(mode);
 
     public void SendGameEvent(EventName name, float value)
     {
@@ -58,6 +68,9 @@ public class EventManager : Singleton<EventManager>
             case EventName.CollectItem:
                 CollectItem?.Invoke(this, obj);
                 break;
+            case EventName.PlaceModule:
+                PlaceModule?.Invoke(this, obj);
+                break;
             default:
                 break;
         }
@@ -72,6 +85,9 @@ public class EventManager : Singleton<EventManager>
             case EventName.NPCSpeaks:
                 NPCSpeaks?.Invoke(this, str);
                 break;
+            case EventName.InventorySelectModule:
+                InventorySelectModule?.Invoke(this, str);
+                break;
             default:
                 break;
         }
@@ -79,13 +95,28 @@ public class EventManager : Singleton<EventManager>
         SendTaskNotification(name);
     }
 
+    public void SendUIEvent(EventName name)
+    {
+        switch (name)
+        {
+            case EventName.UIUp:
+                UIUp?.Invoke();
+                break;
+            case EventName.UIDown:
+                UIDown?.Invoke();
+                break;
+            case EventName.UISubmit:
+                UISubmit?.Invoke();
+                break;
+            default:
+                break;
+        }
+    }
+
     public void ClearNotifyTaskObserverSubscribers()
     {
         NotifyTaskObserver = null;
     }
 
-    private void SendTaskNotification(EventName eventName)
-    {
-        NotifyTaskObserver?.Invoke(eventName);
-    }
+    private void SendTaskNotification(EventName eventName) => NotifyTaskObserver?.Invoke(eventName);
 }

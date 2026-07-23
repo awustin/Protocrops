@@ -9,10 +9,12 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private PanelRenderer _panel;
     [SerializeField] private Transform _menu;
     private EventManager _eventManager;
+    private GameModeManager _gameModeManager;
 
     private void Awake()
     {
         _eventManager = EventManager.Instance;
+        _gameModeManager = GameModeManager.Instance;
         _panel.RegisterUIReloadCallback(OnUIReload);
     }
 
@@ -47,6 +49,7 @@ public class PauseMenuManager : MonoBehaviour
     private void OnClickResume()
     {
         _menu.gameObject.SetActive(false);
+        _gameModeManager.SetMode(GameMode.Normal);
         // Resume scenes
     }
 
